@@ -124,7 +124,7 @@
 
     if (isPublished) {
       const version = release.version ? ` ${release.version}` : "";
-      statusElement.textContent = `Verified community release${version}. Check each artifact’s checksum before running it.`;
+      statusElement.textContent = `Verified community release${version}. Check each artifact’s signing label and checksum before running it.`;
     } else {
       statusElement.textContent = "No verified community release is published yet. Download buttons remain disabled until the manifest points to canonical artifacts.";
     }

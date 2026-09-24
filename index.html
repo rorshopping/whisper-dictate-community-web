@@ -118,7 +118,7 @@
           </div>
           <a class="text-link" href="./releases.json">View releases.json <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="sub">No verified community release is published yet. The buttons below are deliberately disabled until <code>releases.json</code> is updated with canonical artifact URLs and checksums. There is no guessed or placeholder download endpoint.</p>
+        <p class="sub">Community preview release <code>0.1.0</code> is published through the canonical GitHub release. The Windows portable ZIP is explicitly unsigned; the macOS Apple Silicon ZIP is Developer ID signed and notarized. Installer buttons remain disabled until verified installer packages are available. There is no guessed or placeholder download endpoint.</p>
         <p class="release-status status-placeholder" id="release-status" role="status" aria-live="polite">Loading the release manifest…</p>
         <noscript><p class="inline-note">JavaScript is required to read the same-origin release manifest. The download buttons stay disabled for safety; you can still inspect <a href="./releases.json"><code>releases.json</code></a> and the <a href="https://github.com/rorshopping/whisper-dictate-community">source repository</a>.</p></noscript>
 
@@ -148,7 +148,7 @@
                 <button class="btn btn-secondary download-action" type="button" data-download data-platform="windows-x64" data-artifact="installer" disabled>Not published yet</button>
               </div>
             </div>
-            <p class="artifact-note">Windows builds and their checksums will be listed together.</p>
+            <p class="artifact-note">The current Windows portable ZIP is an unsigned preview; its SHA-256 is published with the release manifest.</p>
           </article>
 
           <article class="release-card" data-platform-card="macos-apple-silicon" aria-labelledby="macos-title">
@@ -176,7 +176,7 @@
                 <button class="btn btn-secondary download-action" type="button" data-download data-platform="macos-apple-silicon" data-artifact="installer" disabled>Not published yet</button>
               </div>
             </div>
-            <p class="artifact-note">Intel macOS is outside this placeholder release track; check the source README for current platform support.</p>
+            <p class="artifact-note">The current macOS portable ZIP is Developer ID signed and notarized. Intel macOS remains outside this release track.</p>
           </article>
         </div>
 

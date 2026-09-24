@@ -14,9 +14,11 @@ The page makes a deliberately narrow promise:
   model publisher's license applies;
 - after the model is cached, recording and transcription run locally.
 
-No verified community artifact is advertised yet. The download controls are
-disabled on purpose until `releases.json` contains canonical URLs and real
-SHA-256 checksums.
+The first community preview is published through the canonical GitHub release.
+The Windows portable artifact is explicitly labeled as an unsigned preview; the
+macOS Apple Silicon artifact is Developer ID signed and notarized. The page
+never invents a download URL: `releases.json` must contain the canonical URL and
+real SHA-256 checksum before a button is enabled.
 
 ## Files
 

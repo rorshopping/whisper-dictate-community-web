@@ -8,11 +8,11 @@
   },
   "generated_at": "2026-09-24",
   "release": {
-    "status": "placeholder",
-    "version": null,
-    "published_at": null,
-    "release_page": null,
-    "notes": "No canonical community release has been published. Replace this manifest only after verified artifacts and checksums exist."
+    "status": "published",
+    "version": "0.1.0",
+    "published_at": "2026-09-24T23:46:46Z",
+    "release_page": "https://github.com/rorshopping/whisper-dictate-community/releases/tag/community-v0.1.0",
+    "notes": "Community preview: the Windows x64 portable ZIP is explicitly unsigned; the macOS Apple Silicon portable ZIP is Developer ID signed, notarized, stapled, and Gatekeeper-assessed. Installers remain unavailable until separately verified."
   },
   "source": {
     "repository": "https://github.com/rorshopping/whisper-dictate-community",
@@ -27,10 +27,11 @@
       "platform_label": "Windows x64",
       "kind": "portable_zip",
       "label": "Portable ZIP",
-      "filename": null,
-      "url": null,
-      "sha256": null,
-      "size_bytes": null
+      "filename": "WhisperDictate-0.1.0-windows-x64-unsigned.zip",
+      "url": "https://github.com/rorshopping/whisper-dictate-community/releases/download/community-v0.1.0/WhisperDictate-0.1.0-windows-x64-unsigned.zip",
+      "sha256": "cb2a514d0456e485ca539fbaf31100188b851dda8898ee8bf330bf561d1d9e6c",
+      "size_bytes": 366226459,
+      "signing": "unsigned-preview"
     },
     {
       "id": "windows-x64-installer",
@@ -49,10 +50,11 @@
       "platform_label": "macOS Apple Silicon",
       "kind": "portable_zip",
       "label": "Portable ZIP",
-      "filename": null,
-      "url": null,
-      "sha256": null,
-      "size_bytes": null
+      "filename": "WhisperDictate-0.1.0-macos-arm64-notarized.zip",
+      "url": "https://github.com/rorshopping/whisper-dictate-community/releases/download/community-v0.1.0/WhisperDictate-0.1.0-macos-arm64-notarized.zip",
+      "sha256": "6dcfd2ca1a270cd893094a62fa09f9f49ad7f8ed2a693164b5f7322b873c87b2",
+      "size_bytes": 329337312,
+      "signing": "developer-id-notarized"
     },
     {
       "id": "macos-apple-silicon-installer",
