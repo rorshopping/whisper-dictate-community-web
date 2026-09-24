@@ -59,6 +59,11 @@ framework preset, serverless function, or package installation.
    this directory. A public static download URL belongs in `releases.json`, not
    in a secret.
 
+The current production deployment was created with the authenticated Vercel
+CLI. If automatic GitHub synchronization is desired, connect this repository
+through the Vercel GitHub App in project settings; the site itself has no
+secrets or server-side functions.
+
 ## Replacing the safe placeholders after a release
 
 Only update the manifest after the release owner has verified the artifacts:
