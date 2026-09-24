@@ -387,7 +387,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print(f"Community site validation passed: {len(parsers)} HTML pages, 4 artifact placeholders, local links, manifest, and security headers checked.")
+    print(f"Community site validation passed: {len(parsers)} HTML pages, 4 artifact entries, local links, manifest, and security headers checked.")
     return 0
 
 
