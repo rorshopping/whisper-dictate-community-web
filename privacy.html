@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0e14">
+  <meta name="description" content="Privacy notice for the Whisper Dictate Community Edition static site and local dictation workflow.">
+  <title>Privacy — Whisper Dictate Community Edition</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230a0e14'/%3E%3Crect x='26' y='12' width='12' height='24' rx='6' fill='%2334d399'/%3E%3Cpath d='M18 30a14 14 0 0 0 28 0' stroke='%2322d3ee' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M32 44v8' stroke='%2322d3ee' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="logo" href="./index.html" aria-label="Whisper Dictate Community Edition home">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="26" y="8" width="12" height="26" rx="6" fill="#34d399"></rect>
+          <path d="M16 30a16 16 0 0 0 32 0" stroke="#22d3ee" stroke-width="5" fill="none" stroke-linecap="round"></path>
+          <path d="M32 46v10M22 56h20" stroke="#22d3ee" stroke-width="5" stroke-linecap="round"></path>
+        </svg>
+        <span>Whisper&nbsp;Dictate <span class="edition-mark">Community</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="./index.html#downloads">Downloads</a>
+        <a href="./index.html#models">Models</a>
+        <a href="./licenses.html">Licenses</a>
+      </div>
+      <a class="btn btn-secondary btn-small nav-source" href="https://github.com/rorshopping/whisper-dictate-community">View source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main" class="legal" aria-labelledby="privacy-title">
+    <p class="eyebrow">Community edition</p>
+    <h1 id="privacy-title">Privacy notice</h1>
+    <p class="updated">Last updated: September 24, 2026</p>
+
+    <div class="callout"><strong>Short version:</strong> this landing page has no accounts, forms, cookies, analytics, or tracking. The app’s documented dictation path is local after the selected speech model has been acquired.</div>
+
+    <h2>This website</h2>
+    <p><code>community-site/</code> is a static HTML/CSS/JavaScript site. It has no server-side application, user database, advertising script, analytics script, external font, or payment form. The browser loads its own JavaScript and the same-origin <code>releases.json</code> manifest only. Loading an external link, such as GitHub or a model license, is a separate visit to that destination.</p>
+
+    <h2>Audio and local app data</h2>
+    <ul>
+      <li>Audio is recorded only while the user invokes dictation and is processed by the app on the user’s computer.</li>
+      <li>The documented model-based transcription path does not upload recorded audio to a speech service.</li>
+      <li>Application logs, transcription history, configuration, and personal correction or snippet files remain on the user’s machine and can be deleted by the user.</li>
+      <li>The site itself cannot see or inspect microphone input, local app files, or dictation results.</li>
+    </ul>
+
+    <h2>First model download</h2>
+    <p>The model weights are not bundled with the app or this site. On first use of a language, the documented app downloads the selected model from Hugging Face. That request necessarily contacts Hugging Face and may expose the requester’s IP address, network metadata, and user-agent to that service. The model publisher’s terms and privacy practices apply to that download.</p>
+    <p>After the model is present in the local cache, the documented local transcription path can run offline. “Offline” does not mean the first model acquisition is offline.</p>
+
+    <h2>Download requests</h2>
+    <p>When a community artifact is eventually published, a download request will be made directly to the canonical URL listed in <a href="./releases.json"><code>releases.json</code></a>. The site does not proxy files through an application server and does not store a user identifier in the manifest.</p>
+
+    <h2>Questions and changes</h2>
+    <p>For a question about the software or this notice, use the public repository and its current issue/contact channels: <a href="https://github.com/rorshopping/whisper-dictate-community">source repository</a>. This notice describes this static page and the documented local workflow; it does not replace the source repository’s license, model license, or third-party notices.</p>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>Whisper Dictate Community Edition</strong><p>Free, source-available, and local after model acquisition.</p></div>
+      <div class="footer-links"><a href="./index.html">Home</a><a href="./licenses.html">Licenses &amp; model notices</a><a href="https://github.com/rorshopping/whisper-dictate-community">Source</a></div>
+    </div>
+  </footer>
+</body>
+</html>

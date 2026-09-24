@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0e14">
+  <meta name="description" content="Whisper Dictate Community Edition: free, source-available local dictation for Windows and macOS. Speech models are acquired separately and transcription runs locally after the first download.">
+  <title>Whisper Dictate Community Edition — local, offline dictation</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230a0e14'/%3E%3Crect x='26' y='12' width='12' height='24' rx='6' fill='%2334d399'/%3E%3Cpath d='M18 30a14 14 0 0 0 28 0' stroke='%2322d3ee' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M32 44v8' stroke='%2322d3ee' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="logo" href="./index.html" aria-label="Whisper Dictate Community Edition home">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="26" y="8" width="12" height="26" rx="6" fill="#34d399"></rect>
+          <path d="M16 30a16 16 0 0 0 32 0" stroke="#22d3ee" stroke-width="5" fill="none" stroke-linecap="round"></path>
+          <path d="M32 46v10M22 56h20" stroke="#22d3ee" stroke-width="5" fill-linecap="round"></path>
+        </svg>
+        <span>Whisper&nbsp;Dictate <span class="edition-mark">Community</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#downloads">Downloads</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#models">Models</a>
+        <a href="#troubleshooting">Help</a>
+      </div>
+      <a class="btn btn-secondary btn-small nav-source" href="https://github.com/rorshopping/whisper-dictate-community">View source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="overview" aria-labelledby="hero-title">
+      <div class="wrap">
+        <p class="eyebrow">Free community edition · source available</p>
+        <h1 id="hero-title">Talk to your computer.<br><span class="grad">Keep the words local.</span></h1>
+        <p class="lead">Whisper Dictate Community Edition is a local push-to-talk dictation app for Windows and macOS. After the selected speech model is acquired, transcription runs on your machine and does not upload your audio.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#downloads">View community downloads</a>
+          <a class="btn btn-secondary" href="https://github.com/rorshopping/whisper-dictate-community">Read the source</a>
+        </div>
+        <p class="hero-note">No account, payment, or analytics is required to use this static site. Model weights are not included in the app; their publisher licenses apply.</p>
+        <div class="quick-facts" role="group" aria-label="Community edition facts">
+          <div class="fact"><span class="fact-icon" aria-hidden="true"></span><span><strong>Local by design</strong><small>Audio stays on your computer</small></span></div>
+          <div class="fact"><span class="fact-icon" aria-hidden="true"></span><span><strong>Model-aware</strong><small>Weights download on first use</small></span></div>
+          <div class="fact"><span class="fact-icon" aria-hidden="true">↗</span><span><strong>Open development</strong><small>Inspect and build from source</small></span></div>
+        </div>
+        <div class="key-row" role="group" aria-label="Default dictation shortcuts">
+          <kbd>Ctrl</kbd><span>+</span><kbd>Shift</kbd><span>+</span><kbd>Space</kbd><span>English dictation</span>
+          <span class="key-separator" aria-hidden="true">·</span>
+          <kbd>Ctrl</kbd><span>+</span><kbd>Alt</kbd><span>+</span><kbd>Space</kbd><span>German dictation</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="notice-section" aria-label="What the community edition includes">
+      <div class="wrap">
+        <div class="notice-card">
+          <span class="notice-mark" aria-hidden="true">i</span>
+          <div>
+            <h2>What “community edition” means</h2>
+            <p>This page is for the free, source-available community build. It does not sell access, promise a subscription, or claim that every future artifact is available yet. The repository’s current license and the separate model licenses are the authoritative terms; read them before redistributing software or weights.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" aria-labelledby="capabilities-title">
+      <div class="wrap">
+        <h2 id="capabilities-title">A small, inspectable dictation toolkit</h2>
+        <p class="sub">The community source documents the workflow below. Exact behavior and availability can change with the source revision and your configuration.</p>
+        <div class="feature-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⌨</div>
+            <h3>Push to talk</h3>
+            <p>Hold a configurable hotkey, speak, release, and insert the transcription at the focused text field.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true"></div>
+            <h3>Local post-processing</h3>
+            <p>Deterministic rules can remove filler words, apply spoken punctuation, and format simple structure.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true"></div>
+            <h3>English and German</h3>
+            <p>The documented profiles use separate NVIDIA Nemotron streaming models and language-specific configuration.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true"></div>
+            <h3>Shortcuts and commands</h3>
+            <p>Text snippets and a small command mode are available in the source for users who want repeatable phrases and edits.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true"></div>
+            <h3>Your own hardware</h3>
+            <p>GPU acceleration is used where supported; the documented configuration can fall back to CPU when needed.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true"></div>
+            <h3>Auditable source</h3>
+            <p>Read the implementation, configuration, and setup instructions directly in the source repository.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="downloads" class="alt" aria-labelledby="downloads-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Release manifest</p>
+            <h2 id="downloads-title">Community downloads</h2>
+          </div>
+          <a class="text-link" href="./releases.json">View releases.json <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="sub">No verified community release is published yet. The buttons below are deliberately disabled until <code>releases.json</code> is updated with canonical artifact URLs and checksums. There is no guessed or placeholder download endpoint.</p>
+        <p class="release-status status-placeholder" id="release-status" role="status" aria-live="polite">Loading the release manifest…</p>
+        <noscript><p class="inline-note">JavaScript is required to read the same-origin release manifest. The download buttons stay disabled for safety; you can still inspect <a href="./releases.json"><code>releases.json</code></a> and the <a href="https://github.com/rorshopping/whisper-dictate-community">source repository</a>.</p></noscript>
+
+        <div class="release-grid">
+          <article class="release-card" data-platform-card="windows-x64" aria-labelledby="windows-title">
+            <div class="release-card-header">
+              <div class="os-mark" aria-hidden="true"></div>
+              <div>
+                <p class="platform-kicker">Portable ZIP or installer</p>
+                <h3 id="windows-title">Windows x64</h3>
+              </div>
+            </div>
+            <p class="platform-requirements">Windows 10/11 · 64-bit · NVIDIA GPU recommended; CPU fallback is supported by the documented source.</p>
+            <div class="download-list">
+              <div class="download-row">
+                <div>
+                  <h4>Portable ZIP</h4>
+                  <p>Extract and run from a writable folder. No system-wide install is implied by this option.</p>
+                </div>
+                <button class="btn btn-primary download-action" type="button" data-download data-platform="windows-x64" data-artifact="portable_zip" disabled>Not published yet</button>
+              </div>
+              <div class="download-row">
+                <div>
+                  <h4>Installer</h4>
+                  <p>A guided installer will appear here only after a verified community installer is published.</p>
+                </div>
+                <button class="btn btn-secondary download-action" type="button" data-download data-platform="windows-x64" data-artifact="installer" disabled>Not published yet</button>
+              </div>
+            </div>
+            <p class="artifact-note">Windows builds and their checksums will be listed together.</p>
+          </article>
+
+          <article class="release-card" data-platform-card="macos-apple-silicon" aria-labelledby="macos-title">
+            <div class="release-card-header">
+              <div class="os-mark" aria-hidden="true"></div>
+              <div>
+                <p class="platform-kicker">Portable ZIP or installer</p>
+                <h3 id="macos-title">macOS Apple Silicon</h3>
+              </div>
+            </div>
+            <p class="platform-requirements">macOS 13+ · Apple Silicon (arm64) · Apple GPU acceleration where supported; CPU fallback is documented.</p>
+            <div class="download-list">
+              <div class="download-row">
+                <div>
+                  <h4>Portable ZIP</h4>
+                  <p>Unzip the app bundle and launch it from your Applications folder or another writable location.</p>
+                </div>
+                <button class="btn btn-primary download-action" type="button" data-download data-platform="macos-apple-silicon" data-artifact="portable_zip" disabled>Not published yet</button>
+              </div>
+              <div class="download-row">
+                <div>
+                  <h4>Installer</h4>
+                  <p>An Apple Silicon installer is not advertised until its package and checksum are verified.</p>
+                </div>
+                <button class="btn btn-secondary download-action" type="button" data-download data-platform="macos-apple-silicon" data-artifact="installer" disabled>Not published yet</button>
+              </div>
+            </div>
+            <p class="artifact-note">Intel macOS is outside this placeholder release track; check the source README for current platform support.</p>
+          </article>
+        </div>
+
+        <div class="source-callout">
+          <div>
+            <h3>Prefer to build from source?</h3>
+            <p>Clone the source repository, follow its setup instructions, and use the documented Python environment. A source build is not the same thing as a verified packaged artifact.</p>
+          </div>
+          <a class="btn btn-secondary" href="https://github.com/rorshopping/whisper-dictate-community#install">Open source setup</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="first-run" aria-labelledby="first-run-title">
+      <div class="wrap">
+        <div class="split-heading">
+          <div>
+            <p class="eyebrow">First run</p>
+            <h2 id="first-run-title">Acquire once, then work offline</h2>
+          </div>
+          <p>“Offline” applies after model acquisition. The community build does not bundle the model weights, so the first use of each language needs a network connection.</p>
+        </div>
+        <ol class="steps" aria-label="Model acquisition steps">
+          <li class="step">
+            <span class="step-number">1</span>
+            <h3>Choose a verified artifact</h3>
+            <p>Use a link from the release manifest, then compare its SHA-256 checksum with the manifest before launching it.</p>
+          </li>
+          <li class="step">
+            <span class="step-number">2</span>
+            <h3>Start the app once online</h3>
+            <p>On first use of a language, the app fetches the documented NVIDIA model from Hugging Face. Each checkpoint is currently described as approximately 2.4 GB.</p>
+          </li>
+          <li class="step">
+            <span class="step-number">3</span>
+            <h3>Review the model terms</h3>
+            <p>The model publisher’s license applies to the weights. They are downloaded directly by the app and are not redistributed with this site or the app archive.</p>
+          </li>
+          <li class="step">
+            <span class="step-number">4</span>
+            <h3>Use local transcription</h3>
+            <p>Once the model is cached, recording and transcription stay local. Later dictation does not need to send audio to a speech service.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="models" class="alt" aria-labelledby="models-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Separate model licenses</p>
+            <h2 id="models-title">Speech models are not part of the community license</h2>
+          </div>
+          <a class="text-link" href="./licenses.html">Read license notices <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="sub">The model publisher supplies the weights and sets the terms. This site links to the model cards and licenses; it does not mirror or relicense the weights.</p>
+        <div class="model-grid">
+          <article class="model-card">
+            <div class="model-card-top">
+              <span class="language-chip">EN</span>
+              <span class="model-size">≈ 2.4 GB</span>
+            </div>
+            <h3>Nemotron Speech Streaming</h3>
+            <p class="mono model-id">nvidia/nemotron-speech-streaming-en-0.6b</p>
+            <p>English profile documented in the source configuration.</p>
+            <div class="link-stack">
+              <a href="https://huggingface.co/nvidia/nemotron-speech-streaming-en-0.6b">Model card on Hugging Face <span aria-hidden="true">↗</span></a>
+              <a href="https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/">NVIDIA Open Model License <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="model-card">
+            <div class="model-card-top">
+              <span class="language-chip">DE</span>
+              <span class="model-size">≈ 2.4 GB</span>
+            </div>
+            <h3>Nemotron 3.5 ASR Streaming</h3>
+            <p class="mono model-id">nvidia/nemotron-3.5-asr-streaming-0.6b</p>
+            <p>German profile uses an explicit de-DE language prompt in the source configuration.</p>
+            <div class="link-stack">
+              <a href="https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b">Model card on Hugging Face <span aria-hidden="true">↗</span></a>
+              <a href="https://openmdw.ai/license/1-1/">OpenMDW 1.1 license <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+        <div class="inline-note">
+          <strong>Model download privacy:</strong> the first model request contacts Hugging Face and may reveal your IP address and request metadata to that service. The app does not upload recorded audio. After a model is cached, the local transcription path does not require that download connection.
+        </div>
+      </div>
+    </section>
+
+    <section id="requirements" aria-labelledby="requirements-title">
+      <div class="wrap">
+        <h2 id="requirements-title">System requirements</h2>
+        <p class="sub">Requirements can differ by source revision and artifact. Treat the manifest and release notes as the source of truth for a published build.</p>
+        <div class="requirements-grid">
+          <article class="requirement-card">
+            <h3>Windows x64</h3>
+            <ul class="check-list">
+              <li>Windows 10 or 11, 64-bit</li>
+              <li>Microphone and keyboard access</li>
+              <li>NVIDIA GPU recommended for acceleration</li>
+              <li>CPU fallback is documented, but may be slower</li>
+            </ul>
+          </article>
+          <article class="requirement-card">
+            <h3>macOS Apple Silicon</h3>
+            <ul class="check-list">
+              <li>macOS 13 or newer, arm64</li>
+              <li>Microphone permission for the launcher</li>
+              <li>Accessibility / Input Monitoring for dictation and paste</li>
+              <li>Apple GPU acceleration where supported; CPU fallback is documented</li>
+            </ul>
+          </article>
+          <article class="requirement-card">
+            <h3>Storage and source builds</h3>
+            <ul class="check-list">
+              <li>Allow roughly 2.4 GB per downloaded language model</li>
+              <li>Leave additional space for the app, cache, and logs</li>
+              <li>Packaged artifacts do not require Python</li>
+              <li>Source setup documents Python 3.12+</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checksums" class="alt" aria-labelledby="checksums-title">
+      <div class="wrap">
+        <h2 id="checksums-title">Verify before you run</h2>
+        <p class="sub">Checksums confirm that a downloaded file matches the manifest. They do not replace reviewing the release notes or source.</p>
+        <div class="checksum-panel" id="checksum-list" aria-live="polite">
+          <p class="empty-state">SHA-256 checksums will appear here when a canonical release is published.</p>
+        </div>
+        <div class="checksum-help">
+          <div>
+            <h3>PowerShell</h3>
+            <code>Get-FileHash .\WhisperDictate-….zip -Algorithm SHA256</code>
+          </div>
+          <div>
+            <h3>macOS / Linux</h3>
+            <code>shasum -a 256 WhisperDictate-….zip</code>
+          </div>
+        </div>
+        <p class="small-note">If a checksum differs, do not run the file. Re-download it and compare the exact filename and hash from <a href="./releases.json"><code>releases.json</code></a>.</p>
+      </div>
+    </section>
+
+    <section id="troubleshooting" aria-labelledby="troubleshooting-title">
+      <div class="wrap">
+        <h2 id="troubleshooting-title">Troubleshooting</h2>
+        <p class="sub">Start with the release manifest and the source README. The answers below describe the documented community workflow, not a support SLA.</p>
+        <div class="faq-list">
+          <details>
+            <summary>Why are the download buttons disabled?</summary>
+            <p>No canonical community release has been entered into <a href="./releases.json"><code>releases.json</code></a> yet. The site intentionally refuses to invent a download URL. Watch the source repository’s release page and update the manifest only after artifacts and checksums are verified.</p>
+          </details>
+          <details>
+            <summary>Why does the first run need internet?</summary>
+            <p>Speech model weights are not bundled. The first use of each language downloads the selected model from Hugging Face. After the model is cached, the documented transcription path runs locally and can work offline.</p>
+          </details>
+          <details>
+            <summary>What permissions does macOS need?</summary>
+            <p>Grant Microphone access to the app or launcher. Dictation and text insertion also use Accessibility / Input Monitoring, and the documented launcher may request Automation access for System Events. Denied permissions can allow recording without allowing text to be inserted.</p>
+          </details>
+          <details>
+            <summary>What if transcription is slow or the GPU is not used?</summary>
+            <p>Check the release/source configuration and the app log. GPU acceleration depends on the platform, available hardware, model, and chosen device. The documented configuration can fall back to CPU, which is generally slower.</p>
+          </details>
+          <details>
+            <summary>What should I do if a checksum does not match?</summary>
+            <p>Do not run the artifact. Confirm the exact filename, download it again from the canonical URL in the manifest, and compare the full SHA-256 digest. A mismatch is a reason to stop and investigate.</p>
+          </details>
+          <details>
+            <summary>Can I redistribute a ZIP or the models?</summary>
+            <p>Do not assume that the model or software terms permit redistribution. Read the repository <a href="https://github.com/rorshopping/whisper-dictate-community/blob/master/LICENSE">software license</a>, the linked model licenses, and the repository’s <a href="https://github.com/rorshopping/whisper-dictate-community/blob/master/THIRD-PARTY-NOTICES.md">third-party notices</a> first.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="source" class="alt" aria-labelledby="source-title">
+      <div class="wrap source-panel">
+        <div>
+          <p class="eyebrow">Build it yourself</p>
+          <h2 id="source-title">The source repository is the reference</h2>
+          <p>Read the code, setup instructions, configuration, and license before using or redistributing a build. This site is a separate community landing page and does not change the repository’s license or model terms.</p>
+        </div>
+        <div class="source-links">
+          <a class="btn btn-primary" href="https://github.com/rorshopping/whisper-dictate-community">Open GitHub source <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="https://github.com/rorshopping/whisper-dictate-community/blob/master/LICENSE">Read software license</a>
+          <a class="btn btn-secondary" href="https://github.com/rorshopping/whisper-dictate-community/blob/master/THIRD-PARTY-NOTICES.md">Third-party notices</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        <strong>Whisper Dictate Community Edition</strong>
+        <p>Free, source-available, and local after model acquisition.</p>
+      </div>
+      <div class="footer-links">
+        <a href="./privacy.html">Privacy</a>
+        <a href="./licenses.html">Licenses &amp; model notices</a>
+        <a href="https://github.com/rorshopping/whisper-dictate-community">Source</a>
+        <a href="./releases.json">Release manifest</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>Community landing page · no deployment-specific secrets or analytics.</span>
+      <a href="#overview">Back to top ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

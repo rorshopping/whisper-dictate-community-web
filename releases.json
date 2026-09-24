@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "Whisper Dictate",
+    "edition": "Community Edition",
+    "repository": "https://github.com/rorshopping/whisper-dictate-community",
+    "source_ref": "master"
+  },
+  "generated_at": "2026-09-24",
+  "release": {
+    "status": "placeholder",
+    "version": null,
+    "published_at": null,
+    "release_page": null,
+    "notes": "No canonical community release has been published. Replace this manifest only after verified artifacts and checksums exist."
+  },
+  "source": {
+    "repository": "https://github.com/rorshopping/whisper-dictate-community",
+    "readme": "https://github.com/rorshopping/whisper-dictate-community#readme",
+    "license": "https://github.com/rorshopping/whisper-dictate-community/blob/master/LICENSE",
+    "third_party_notices": "https://github.com/rorshopping/whisper-dictate-community/blob/master/THIRD-PARTY-NOTICES.md"
+  },
+  "artifacts": [
+    {
+      "id": "windows-x64-portable-zip",
+      "platform": "windows-x64",
+      "platform_label": "Windows x64",
+      "kind": "portable_zip",
+      "label": "Portable ZIP",
+      "filename": null,
+      "url": null,
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "id": "windows-x64-installer",
+      "platform": "windows-x64",
+      "platform_label": "Windows x64",
+      "kind": "installer",
+      "label": "Installer",
+      "filename": null,
+      "url": null,
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "id": "macos-apple-silicon-portable-zip",
+      "platform": "macos-apple-silicon",
+      "platform_label": "macOS Apple Silicon",
+      "kind": "portable_zip",
+      "label": "Portable ZIP",
+      "filename": null,
+      "url": null,
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "id": "macos-apple-silicon-installer",
+      "platform": "macos-apple-silicon",
+      "platform_label": "macOS Apple Silicon",
+      "kind": "installer",
+      "label": "Installer",
+      "filename": null,
+      "url": null,
+      "sha256": null,
+      "size_bytes": null
+    }
+  ],
+  "models": [
+    {
+      "id": "nvidia/nemotron-speech-streaming-en-0.6b",
+      "language": "English",
+      "size": "approximately 2.4 GB",
+      "page": "https://huggingface.co/nvidia/nemotron-speech-streaming-en-0.6b",
+      "license_name": "NVIDIA Open Model License",
+      "license": "https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/"
+    },
+    {
+      "id": "nvidia/nemotron-3.5-asr-streaming-0.6b",
+      "language": "German",
+      "size": "approximately 2.4 GB",
+      "page": "https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b",
+      "license_name": "OpenMDW 1.1",
+      "license": "https://openmdw.ai/license/1-1/"
+    }
+  ]
+}
