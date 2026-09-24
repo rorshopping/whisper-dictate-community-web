@@ -1,8 +1,9 @@
 # Whisper Dictate Community Edition site
 
 This is a separate, static landing page for the free community edition. It is
-intentionally independent from the paid site in `website/`: no payment code,
-payment configuration, analytics, cookies, API routes, or secrets belong here.
+intentionally independent from the paid product site and source repository: no
+payment code, payment configuration, analytics, cookies, API routes, or secrets
+belong here.
 
 The page makes a deliberately narrow promise:
 
