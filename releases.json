@@ -12,7 +12,7 @@
     "version": "0.1.0",
     "published_at": "2026-09-25T17:05:39Z",
     "release_page": "https://github.com/rorshopping/whisper-dictate-community/releases/tag/community-v0.1.0",
-    "notes": "Community preview: the Windows x64 portable ZIP is explicitly unsigned; the macOS Apple Silicon portable ZIP is Developer ID signed, notarized, stapled, and Gatekeeper-assessed. Installers remain unavailable until separately verified."
+    "notes": "Community preview: the Windows x64 portable ZIP is explicitly unsigned; the macOS Apple Silicon ZIP and the notarized disk image are Developer ID signed and notarized. A project-controlled model mirror is tried before Hugging Face for the first-use model download. A Windows installer remains unavailable until one is verified."
   },
   "source": {
     "repository": "https://github.com/rorshopping/whisper-dictate-community",
@@ -62,12 +62,12 @@
       "platform": "macos-apple-silicon",
       "platform_label": "macOS Apple Silicon",
       "kind": "installer",
-      "label": "Installer",
-      "filename": null,
-      "url": null,
-      "sha256": null,
-      "size_bytes": null,
-      "signing": null
+      "label": "Disk image (DMG)",
+      "filename": "WhisperDictate-0.1.0-macos-arm64-notarized.dmg",
+      "url": "https://github.com/rorshopping/whisper-dictate-community/releases/download/community-v0.1.0/WhisperDictate-0.1.0-macos-arm64-notarized.dmg",
+      "sha256": "eef26ead380eaffc52f067d3229dc107baf8aeacf278d9940f312f7fc3966ec2",
+      "size_bytes": 400106300,
+      "signing": "developer-id-notarized"
     }
   ],
   "models": [
