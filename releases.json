@@ -42,7 +42,8 @@
       "filename": null,
       "url": null,
       "sha256": null,
-      "size_bytes": null
+      "size_bytes": null,
+      "signing": null
     },
     {
       "id": "macos-apple-silicon-portable-zip",
@@ -65,7 +66,8 @@
       "filename": null,
       "url": null,
       "sha256": null,
-      "size_bytes": null
+      "size_bytes": null,
+      "signing": null
     }
   ],
   "models": [

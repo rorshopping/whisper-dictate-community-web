@@ -32,6 +32,8 @@ real SHA-256 checksum before a button is enabled.
 - `vercel.json` — Vercel routing plus security headers.
 - `scripts/validate_site.py` — offline HTML, link, manifest, and security
   validation.
+- `scripts/check_release_sync.py` — online check that the manifest still
+  matches the artifacts and checksums actually published on the GitHub release.
 
 ## Local preview and validation
 
@@ -40,12 +42,17 @@ From the repository root, run:
 ```bash
 python scripts/validate_site.py
 python -m unittest discover -s tests -p 'test_*.py'
+python scripts/check_release_sync.py   # needs network access to GitHub
 python -m http.server 8000 --directory .
 ```
 
 Open `http://127.0.0.1:8000/` for a local preview. The validator and its smoke
 test use only the Python standard library and never make a network request.
 They are safe to run before and after changing the manifest.
+`check_release_sync.py` is the opposite: it fetches only release metadata and the
+small `release-manifest.json` asset, never the payload archives, and fails if the
+site advertises a filename, size, or checksum the release does not carry. Run it
+after every release change so a redeploy cannot advertise a stale build.
 
 ## Vercel deployment
 

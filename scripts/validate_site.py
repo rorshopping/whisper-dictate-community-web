@@ -28,6 +28,13 @@ REQUIRED_FILES = (
 
 FAKE_HOST_PARTS = ("example.com", "example.org", "localhost", "127.0.0.1")
 FAKE_URL_PARTS = ("replace-me", "your-release", "path/to/", "coming-soon")
+# Only these signing states may be published. Anything else is a wording bug:
+# a build that is not signed must say so, and a signed build must name the gate.
+SIGNING_VALUES = {
+    "unsigned-preview",
+    "unsigned-portable",
+    "developer-id-notarized",
+}
 SECRET_PATTERNS = (
     re.compile(r"sk_live_[A-Za-z0-9]+"),
     re.compile(r"sk_test_[A-Za-z0-9]+"),
@@ -269,14 +276,19 @@ def validate_manifest(errors: list[str]) -> None:
         filename = artifact.get("filename")
         digest = artifact.get("sha256")
         size = artifact.get("size_bytes")
+        signing = artifact.get("signing")
         if url is None:
-            for field in ("filename", "sha256", "size_bytes"):
+            for field in ("filename", "sha256", "size_bytes", "signing"):
                 if artifact.get(field) is not None:
                     fail(errors, f"{location}: unavailable artifact must have {field}=null")
             continue
         if not isinstance(url, str) or not isinstance(filename, str) or not filename.strip():
             fail(errors, f"{location}: an available artifact needs filename and url")
             continue
+        if not isinstance(signing, str) or not signing.strip():
+            fail(errors, f"{location}: an available artifact needs an explicit signing value")
+        elif signing not in SIGNING_VALUES:
+            fail(errors, f"{location}: unknown signing value {signing!r}, expected one of {sorted(SIGNING_VALUES)!r}")
         validate_external_url(url, f"{location}.url", errors)
         if not re.fullmatch(r"[a-f0-9]{64}", str(digest or ""), re.IGNORECASE):
             fail(errors, f"{location}: available artifact needs a 64-character SHA-256")

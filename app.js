@@ -19,10 +19,25 @@
     }
   }
 
+  const SIGNING_LABELS = {
+    "unsigned-preview": "Unsigned preview",
+    "unsigned-portable": "Unsigned portable preview",
+    "developer-id-notarized": "Developer ID signed and notarized",
+  };
+
+  function signingLabel(artifact) {
+    const value = artifact && typeof artifact.signing === "string" ? artifact.signing.trim() : "";
+    if (!value) {
+      return null;
+    }
+    return SIGNING_LABELS[value] || value;
+  }
+
   function isUsableArtifact(manifest, artifact) {
     const safeDigest = artifact && typeof artifact.sha256 === "string" && /^[a-f0-9]{64}$/i.test(artifact.sha256);
     const safeFilename = artifact && typeof artifact.filename === "string" && artifact.filename.trim().length > 0;
     const safeZip = !artifact || artifact.kind !== "portable_zip" || /\.zip$/i.test(artifact.filename || "");
+    const labelled = signingLabel(artifact) !== null;
     return Boolean(
       manifest &&
       manifest.release &&
@@ -32,6 +47,7 @@
       safeFilename &&
       safeDigest &&
       safeZip &&
+      labelled &&
       Number.isInteger(artifact.size_bytes) &&
       artifact.size_bytes > 0
     );
@@ -45,14 +61,20 @@
 
   function makeDownloadLink(button, artifact, platformLabel) {
     const link = document.createElement("a");
+    const signed = signingLabel(artifact);
     link.className = button.className;
     link.href = artifact.url;
     link.textContent = `Download ${artifact.label}`;
-    link.setAttribute("aria-label", `Download ${artifact.label} for ${platformLabel}: ${artifact.filename}`);
+    link.setAttribute(
+      "aria-label",
+      `Download ${artifact.label} for ${platformLabel}: ${artifact.filename} (${signed})`,
+    );
     link.setAttribute("rel", "noopener noreferrer");
     link.dataset.download = "enabled";
     link.dataset.platform = button.dataset.platform;
     link.dataset.artifact = button.dataset.artifact;
+    link.dataset.signing = artifact.signing;
+    link.title = signed;
     return link;
   }
 
@@ -112,7 +134,8 @@
     }
 
     published.forEach((artifact) => {
-      appendChecksumRow(artifact.filename, artifact.sha256, artifact.label);
+      const signed = signingLabel(artifact);
+      appendChecksumRow(artifact.filename, artifact.sha256, `${artifact.label} · ${signed}`);
     });
   }
 
@@ -124,9 +147,9 @@
 
     if (isPublished) {
       const version = release.version ? ` ${release.version}` : "";
-      statusElement.textContent = `Verified community release${version}. Check each artifact’s signing label and checksum before running it.`;
+      statusElement.textContent = `Published community preview${version}. Windows is an explicitly unsigned preview; the macOS artifact is Developer ID signed and notarized. Check each artifact’s signing label and checksum before running it.`;
     } else {
-      statusElement.textContent = "No verified community release is published yet. Download buttons remain disabled until the manifest points to canonical artifacts.";
+      statusElement.textContent = "No community release is published yet. Download buttons remain disabled until the manifest points to canonical artifacts.";
     }
   }
 
