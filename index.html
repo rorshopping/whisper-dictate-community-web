@@ -208,7 +208,7 @@
           <li class="step">
             <span class="step-number">2</span>
             <h3>Start the app once online</h3>
-            <p>On first use of a language, the app fetches the documented NVIDIA model from Hugging Face. Each checkpoint is currently described as approximately 2.4 GB.</p>
+            <p>At startup the app fetches the documented NVIDIA model for every configured language. It tries the configured mirror chain first and falls back to Hugging Face, so a first run still works when huggingface.co is unreachable. Each checkpoint is currently described as approximately 2.4 GB.</p>
           </li>
           <li class="step">
             <span class="step-number">3</span>
@@ -263,7 +263,7 @@
           </article>
         </div>
         <div class="inline-note">
-          <strong>Model download privacy:</strong> the first model request contacts Hugging Face and may reveal your IP address and request metadata to that service. The app does not upload recorded audio. After a model is cached, the local transcription path does not require that download connection.
+          <strong>Model download privacy:</strong> the first model request contacts the configured mirror host or Hugging Face and may reveal your IP address and request metadata to that service. The app does not upload recorded audio. After a model is cached, the local transcription path does not require that download connection.
         </div>
       </div>
     </section>
