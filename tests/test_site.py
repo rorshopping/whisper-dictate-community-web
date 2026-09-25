@@ -93,6 +93,17 @@ class CommunitySiteTests(unittest.TestCase):
         )
         self.assertIn("unsigned", text.lower(), "the page must state the Windows preview is unsigned")
 
+    def test_index_html_does_not_promise_windows_gpu_acceleration(self) -> None:
+        """The published Windows artifact is a CPU-only build; say so plainly."""
+        text = INDEX_HTML.read_text(encoding="utf-8")
+        misleading = re.search(r"NVIDIA GPU (recommended|required|used|accelerated)", text, re.IGNORECASE)
+        self.assertIsNone(
+            misleading,
+            "the page must not promise NVIDIA GPU use on the CPU-only Windows build: "
+            + (misleading.group(0) if misleading else ""),
+        )
+        self.assertIn("CPU-only", text, "the page must state that the Windows build is CPU-only")
+
 
 if __name__ == "__main__":
     unittest.main()

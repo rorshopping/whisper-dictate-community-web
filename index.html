@@ -98,7 +98,7 @@
           <article class="card">
             <div class="card-icon" aria-hidden="true"></div>
             <h3>Your own hardware</h3>
-            <p>GPU acceleration is used where supported; the documented configuration can fall back to CPU when needed.</p>
+            <p>The published Windows preview ships a CPU-only PyTorch build, so transcription runs on the processor. The macOS app uses Apple GPU acceleration where the hardware supports it.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true"></div>
@@ -131,7 +131,7 @@
                 <h3 id="windows-title">Windows x64</h3>
               </div>
             </div>
-            <p class="platform-requirements">Windows 10/11 · 64-bit · NVIDIA GPU recommended; CPU fallback is supported by the documented source.</p>
+            <p class="platform-requirements">Windows 10/11 · 64-bit · CPU-only build; this preview does not bundle a CUDA runtime, so an NVIDIA GPU is not used.</p>
             <div class="download-list">
               <div class="download-row">
                 <div>
@@ -278,8 +278,8 @@
             <ul class="check-list">
               <li>Windows 10 or 11, 64-bit</li>
               <li>Microphone and keyboard access</li>
-              <li>NVIDIA GPU recommended for acceleration</li>
-              <li>CPU fallback is documented, but may be slower</li>
+              <li>CPU-only build in this preview (no bundled CUDA runtime)</li>
+              <li>A CPU-only transcription is slower than a GPU build</li>
             </ul>
           </article>
           <article class="requirement-card">
@@ -344,7 +344,7 @@
           </details>
           <details>
             <summary>What if transcription is slow or the GPU is not used?</summary>
-            <p>Check the release/source configuration and the app log. GPU acceleration depends on the platform, available hardware, model, and chosen device. The documented configuration can fall back to CPU, which is generally slower.</p>
+            <p>Check the release/source configuration and the app log. The published Windows preview is a CPU-only build, so an NVIDIA GPU is not used there; the macOS app uses Apple GPU acceleration where the hardware supports it. A CPU-only run is generally slower than an accelerated one.</p>
           </details>
           <details>
             <summary>What should I do if a checksum does not match?</summary>
